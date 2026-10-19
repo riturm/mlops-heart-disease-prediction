@@ -1,0 +1,12 @@
+# k8s/service.yaml  (exposes the Deployment)
+apiVersion: v1
+kind: Service
+metadata:
+  name: heart-api-svc
+spec:
+  type: LoadBalancer        # use NodePort for Minikube if LoadBalancer is pending
+  selector:
+    app: heart-api
+  ports:
+    - port: 80
+      targetPort: 8000
